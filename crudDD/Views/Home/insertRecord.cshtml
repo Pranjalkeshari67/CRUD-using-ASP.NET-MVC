@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "insertRecord";
+}
+
+<section class="main">
+    <div class="container shadow p-3 mt-5 bg-white">
+        <div class="row p-4">
+            <div class="row mb-3">
+                <div class="col-md-12  head p-3">
+                    Student Registration
+                </div>
+            </div>
+
+            <form action="/Home/insertRecord" method="post">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Student's Name</label>
+                            <div class="d-flex align-items-center mt-2">
+                                <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                                <input type="text" name="Name" class="form-control rounded-0" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Guardian Name</label>
+                            <div class="d-flex align-items-center mt-2">
+                                <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                                <input type="text" name="Guardian_Name" class="form-control rounded-0" required />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Class Id</label>
+                            <div class="d-flex align-items-center mt-2">
+                                <i class="fa-solid fa-id-card" style="color: #ffffff;"></i>
+                                <select name="Class_id" class="form-select rounded-0" required>
+                                    <option value=1>1</option>
+                                    <option value=2>2</option>
+                                    <option value=3>3</option>
+                                    <option value=4>4</option>
+                                    <option value=5>5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Date Of Birth</label>
+                            <div class="d-flex align-items-center mt-2">
+                                <i class="fa-solid fa-calendar-days" style="color: #ffffff;"></i>
+                                <input type="date" name="DOB" class="form-control rounded-0" required />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Admission date</label>
+                            <div class="d-flex align-items-center mt-2">
+                                <i class="fa-solid fa-calendar-days" style="color: #ffffff;"></i>
+                                <input type="date" name="Admission_date" class="form-control rounded-0" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">@ViewBag.msg</div>
+                    
+                    <div class="col-md-6 mt-5 d-flex justify-content-between">
+
+                        <button type="submit" class="btn-submit shadow">Submit</button>
+
+                        <button class="btn-submit shadow"
+                                onclick="window.location.href = '/Home/showTables';">
+                            Student Details
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>

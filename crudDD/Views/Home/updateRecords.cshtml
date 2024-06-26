@@ -1,0 +1,104 @@
+﻿@using crudDD.Models;
+@{
+    ViewBag.Title = "updateRecords";
+}
+@{
+    List <Student> stu_data = ViewBag.stud_data as List<Student>;
+}
+
+<section class="main">
+    <div class="container shadow p-3 mt-5 bg-white">
+        <div class="row p-4">
+            <div class="row mb-3">
+                <div class="col-md-12  head p-3">
+                    Student Registration
+                </div>
+            </div>
+            @foreach (var item in stu_data)
+            {
+                <form action="~/Home/updateRecords" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="hidden" name="stu_id" value="@item.stu_id" id="EmployeeId" />
+                                <label>Student's Name</label>
+                                <div class="d-flex align-items-center mt-2">
+
+                                    <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+
+                                    <input type="text" name="Name" value="@item.Name" class="form-control rounded-0" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Guardian Name</label>
+                                <div class="d-flex align-items-center mt-2">
+                                    <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+                                    <input type="text" name="Guardian_Name" value="@item.Guardian_Name" class="form-control rounded-0" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Class Id</label>
+                                <div class="d-flex align-items-center mt-2">
+                                    <i class="fa-solid fa-id-card" style="color: #ffffff;"></i>
+                                    <select name="Class_id" class="form-select rounded-0" required>
+                                        @for (int i = 1; i <= 5; i++)
+                                        {
+                                    <option value="@i" @(i == item.Class_id ? "selected" : "")>@i</option>}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Date Of Birth</label>
+                                <div class="d-flex align-items-center mt-2">
+                                    <i class="fa-solid fa-calendar-days" style="color: #ffffff;"></i>
+                                    @*<input type="hidden" name="DOB" value="@item.DOB" />*@
+                                    <input type="date" name="DOB" value = "@item.DOB" class="form-control rounded-0" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Admission date</label>
+                                <div class="d-flex align-items-center mt-2">
+                                    <i class="fa-solid fa-calendar-days" style="color: #ffffff;"></i>
+                                    @*<input type="hidden" name="DOB" value="@item.Admission_date" />*@
+                                    <input type="date" name="Admission_date" value="@item.Admission_date" class="form-control rounded-0" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6 mt-5 d-flex justify-content-between">
+                           
+                            <button type="submit" class="btn-submit shadow">Update</button>
+
+                            <button class="btn-submit shadow"
+                                    onclick="window.location.href = '/Home/showTables';">
+                                Student Details
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            }
+            </div>
+    </div>
+</section>
+
+

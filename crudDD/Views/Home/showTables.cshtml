@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "showTables";
+}
+@using crudDD.Models;
+@{ 
+    List<Student> Stud_lst = ViewBag.students as List<Student>;
+}
+@*<style href="" alt="style-sheet"></style>*@
+
+<section id="table-main" >
+    <div class="container table-box shadow p-4 mt-5 bg-white">
+        <div class="row">
+            <div class="col-md-12 tbl-heading shadow">
+                Student Details
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-12 d-flex justify-content-end">
+                <a href="/Home/insertRecord"><button class="btn-submit shadow">Register Here</button></a>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <table class="border">
+                    <tr>
+                        <th>S.no.</th>
+                        <th>Stu Id</th>
+                        <th>Name</th>
+                        <th>Guardian Name</th>
+                        <th>Class Id</th>
+                        <th>Date of birth</th>
+                        <th>Admission date</th>
+                        <th>Edit/Update</th>
+                        <th>Delete</th>
+
+                    </tr>
+                    @{
+                        if (Stud_lst.Count > 0)
+                        {
+                            int count = 0;
+                            foreach (var item in Stud_lst)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>CP_STU-@item.stu_id</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Guardian_Name</td>
+                                    <td>@item.Class_id</td>
+                                    <td>@item.DOB</td>
+                                    <td>@item.Admission_date</td>
+                                    <td><a href="@Url.Action("updateRecords","Home", new { stID = item.stu_id })"><i class="fa-solid fa-pen-to-square" style="color: #3f3d3d; font-size: 20px;"></i></a></td>
+                                    <td><a href="/Home/Delete?id=@item.stu_id"><i class="fa-solid fa-trash" style="color:#3f3d3d ; font-size:20px;"></i></a></td>
+
+                                </tr>
+                            }
+                        }
+            else
+            {
+                <span>Data not available</span>
+            }
+                    }
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
